@@ -1,0 +1,97 @@
+<html >
+<head>
+  <title>Palindrome Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #000000;
+      background-image:url("https://th.bing.com/th/id/OIP.5u-eLw4KdpXTDERHSDJapAHaC6?w=318&h=137&c=7&r=0&o=7&cb=ucfimg2&dpr=1.5&pid=1.7&rm=3&ucfimg=1");
+    }
+    .Note{
+        background: rgb(0, 45, 128);
+        padding: 2%;
+        color:white;
+        border-radius: 12px;
+    }
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgb(255, 254, 254);
+      width: 450px;
+      text-align: center;
+    }
+    input {
+      margin: 10px auto;
+      display: block;
+      width: 90%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 50%;
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+            font-weight: bold;
+
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    #result {
+      margin-top: 16px;
+      margin-bottom: 16px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Is it a Palindrome?</h2>
+    <input type="text" id="textInput" placeholder="Enter text" />
+    <button onclick="checkPalindrome()">Check</button>
+    <div id="result"></div>
+
+    <div class="Note">
+      <h3>💡 A palindrome is a word which reads the same backwards</h3>
+    </div>
+  </div>
+
+  <script>
+    function checkPalindrome() {
+      const text = document.getElementById('textInput').value;
+       if (text === "") {
+        document.getElementById('result').innerText = "";
+        return;
+      }
+
+      const invalidPattern = /[^a-zA-Z0-9]/;
+      if (invalidPattern.test(text)) {
+        document.getElementById('result').innerText =
+          "Invalid input! Special characters are not allowed.";
+        return;
+      }
+
+      const cleaned = text.toLowerCase();
+      const reversed = cleaned.split('').reverse().join('');
+
+      const result =
+        cleaned === reversed
+          ? `${text} is a Palindrome`
+          : `${text} is not a Palindrome`;
+
+      document.getElementById('result').innerText = result;
+    }
+  </script>
+</body>
+</html>
